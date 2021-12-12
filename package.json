@@ -21,6 +21,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "ts-watch": "yarn tsc --watch",
     "ts": "yarn tsc",
     "lint": "eslint --cache \"./**/*.{ts,tsx}\"",
     "lint:fix": "eslint --cache --fix \"./**/*.{ts,tsx}\"",
