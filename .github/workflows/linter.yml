@@ -9,18 +9,23 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v2
-              with:
-                  node-version: '16'
-                  # https://github.com/actions/cache/issues/698
-                  # https://github.com/actions/setup-node/issues/378
-                  # cache: 'yarn'
-            - run: yarn install
-            - run: yarn lint
-              env:
-                  NODE_ENV: development
-            - run: yarn ts
+            -
+                uses: actions/checkout@v2
+            -
+                uses: actions/setup-node@v2
+                with:
+                    node-version: '16'
+                    # https://github.com/actions/cache/issues/698
+                    # https://github.com/actions/setup-node/issues/378
+                    # cache: 'yarn'
+            -
+                run: yarn install
+            -
+                run: yarn lint
+                env:
+                    NODE_ENV: development
+            -
+                run: yarn ts
 
     super-linter:
         name: Lint with Super-Linter
