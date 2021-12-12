@@ -17,6 +17,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "ts": "yarn tsc",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
