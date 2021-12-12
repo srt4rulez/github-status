@@ -1,9 +1,7 @@
-import React from 'react';
+const App = (): JSX.Element | null => {
 
-const App = () => {
+    return null;
 
-  return null;
-
-}
+};
 
 export default App;
