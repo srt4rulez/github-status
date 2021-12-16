@@ -1,23 +1,25 @@
 import useSWR from 'swr';
+import type { AxiosError } from 'axios';
+import axios from 'axios';
 import type { Summary } from 'types';
 
-// @ts-ignore
-const fetcher = (...args): () => Promise<any> => fetch(...args).then(res => res.json());
+// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+const fetcher = <T>(url: string): Promise<T> => axios.get(url).then((res) => res.data);
 
 interface UseSummaryReturn {
     summary?: Summary;
     isLoading: boolean;
     isError: boolean;
-    isValidating: boolean;
+    error?: AxiosError;
 }
 
 export const useSummary = (): UseSummaryReturn => {
     const {
         data,
         error,
-        isValidating,
-        // @ts-ignore
-    } = useSWR<Summary>('https://www.githubstatus.com/api/v2/summary.json', fetcher);
+    } = useSWR<Summary, AxiosError>('https://www.githubstatus.com/api/v2/summary.json', fetcher);
+
+    console.dir(error);
 
     return {
         summary: {
@@ -51,8 +53,7 @@ export const useSummary = (): UseSummaryReturn => {
             ],
         },
         isLoading: !error && !data,
-        // isLoading: true,
         isError: Boolean(error),
-        isValidating: isValidating,
+        error: error,
     };
 };
