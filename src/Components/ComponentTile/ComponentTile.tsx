@@ -6,47 +6,17 @@ import {
     Tag,
 } from '@chakra-ui/react';
 import type { GithubComponent } from 'types';
+import {
+    STATUS_ICON_ENUM,
+    STATUS_ICON_COLOR_ENUM,
+    STATUS_BORDER_COLOR_ENUM,
+    STATUS_LABEL_ENUM,
+    STATUS_LABEL_COLOR_ENUM,
+} from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faExclamationTriangle,
-    faInfoCircle,
     faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
-
-const STATUS_ICON_ENUM = {
-    'operational':          faCheckCircle,
-    'degraded_performance': faInfoCircle,
-    'partial_outage':       faExclamationTriangle,
-    'major_outage':         faExclamationTriangle,
-};
-
-const STATUS_ICON_COLOR_ENUM = {
-    'operational':          'green.500',
-    'degraded_performance': 'yellow.500',
-    'partial_outage':       'orange.500',
-    'major_outage':         'red.500',
-};
-
-const STATUS_BORDER_COLOR_ENUM = {
-    'operational':          'gray.200',
-    'degraded_performance': 'yellow.500',
-    'partial_outage':       'orange.500',
-    'major_outage':         'red.500',
-};
-
-const STATUS_LABEL_ENUM = {
-    'operational':          'Operational',
-    'degraded_performance': 'Degraded Performance',
-    'partial_outage':       'Partial Outage',
-    'major_outage':         'Major Outage',
-};
-
-const STATUS_LABEL_COLOR_ENUM = {
-    'operational':          'green',
-    'degraded_performance': 'yellow',
-    'partial_outage':       'orange',
-    'major_outage':         'red',
-};
 
 interface ComponentTileProps extends Partial<GithubComponent> { // eslint-ignore-line @typescript-eslint/no-empty-interface
 }
