@@ -18,7 +18,7 @@ import {
     faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-interface ComponentTileProps extends Partial<GithubComponent> { // eslint-ignore-line @typescript-eslint/no-empty-interface
+interface ComponentTileProps extends Partial<GithubComponent> { // eslint-disable-line @typescript-eslint/no-empty-interface
 }
 
 const ComponentTile = (props: ComponentTileProps): JSX.Element | null => {
