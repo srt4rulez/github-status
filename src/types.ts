@@ -1,10 +1,12 @@
-export type IndicatorStatus = 'none'
+export type IndicatorStatus =
+    | 'none'
     | 'minor'
     | 'major'
     | 'critical'
 ;
 
-export type ComponentStatus = 'operational'
+export type ComponentStatus =
+    | 'operational'
     | 'degraded_performance'
     | 'partial_outage'
     | 'major_outage'
