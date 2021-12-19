@@ -6,6 +6,7 @@ import {
     Heading,
 } from '@chakra-ui/react';
 import ComponentTile from 'Components/ComponentTile/ComponentTile';
+import InlineError from 'Components/InlineError/InlineError';
 import ComponentTileSkeleton from 'Components/ComponentTileSkeleton/ComponentTileSkeleton';
 
 const App = (): JSX.Element | null => {
@@ -14,7 +15,14 @@ const App = (): JSX.Element | null => {
         summary,
         isLoading,
         isError,
+        error,
+        isValidating,
+        refetchSummary,
     } = useSummary();
+
+    const handleInlineErrorClick = (): void => {
+        void refetchSummary();
+    };
 
     return (
 
@@ -35,48 +43,64 @@ const App = (): JSX.Element | null => {
 
             </Heading>
 
-            <Grid
-                gap="4"
-                templateColumns={{
-                    md: 'repeat(3, 1fr)',
-                    sm: 'repeat(2, 1fr)',
-                }}
-            >
+            {isError ? (
 
-                {isLoading && (
+                <InlineError
+                    header="Error fetching Github status"
+                    message={error ? error.message : undefined}
+                    buttonLabel="Fetch GitHub Status"
+                    buttonProps={{
+                        isLoading: isValidating,
+                        onClick: handleInlineErrorClick,
+                    }}
+                />
 
-                    <React.Fragment>
+            ) : (
 
-                        <ComponentTileSkeleton />
-                        <ComponentTileSkeleton />
-                        <ComponentTileSkeleton />
-                        <ComponentTileSkeleton />
-                        <ComponentTileSkeleton />
-                        <ComponentTileSkeleton />
-                        <ComponentTileSkeleton />
-                        <ComponentTileSkeleton />
-                        <ComponentTileSkeleton />
+                <Grid
+                    gap="4"
+                    templateColumns={{
+                        md: 'repeat(3, 1fr)',
+                        sm: 'repeat(2, 1fr)',
+                    }}
+                >
 
-                    </React.Fragment>
+                    {isLoading && (
 
-                )}
+                        <React.Fragment>
 
-                {summary && summary.components ? summary.components.map((component) => {
+                            <ComponentTileSkeleton />
+                            <ComponentTileSkeleton />
+                            <ComponentTileSkeleton />
+                            <ComponentTileSkeleton />
+                            <ComponentTileSkeleton />
+                            <ComponentTileSkeleton />
+                            <ComponentTileSkeleton />
+                            <ComponentTileSkeleton />
+                            <ComponentTileSkeleton />
 
-                    return (
+                        </React.Fragment>
 
-                        <ComponentTile
-                            key={component.id}
-                            name={component.name}
-                            status={component.status}
-                            description={component.description}
-                        />
+                    )}
 
-                    );
+                    {summary && summary.components ? summary.components.map((component) => {
 
-                }) : null}
+                        return (
 
-            </Grid>
+                            <ComponentTile
+                                key={component.id}
+                                name={component.name}
+                                status={component.status}
+                                description={component.description}
+                            />
+
+                        );
+
+                    }) : null}
+
+                </Grid>
+
+            )}
 
         </Container>
 
