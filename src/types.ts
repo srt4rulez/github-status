@@ -34,7 +34,9 @@ export interface GithubStatus {
 }
 
 export interface Summary {
-    updated_at?: string;
+    page: {
+        updated_at?: string;
+    };
     components?: Array<GithubComponent>;
     status?: GithubStatus;
 }
