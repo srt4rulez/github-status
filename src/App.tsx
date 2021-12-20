@@ -4,10 +4,24 @@ import {
     Grid,
     Container,
     Heading,
+    Tag,
+    TagLabel,
+    VStack,
+    Text,
+    Tooltip,
 } from '@chakra-ui/react';
 import ComponentTile from 'Components/ComponentTile/ComponentTile';
 import InlineError from 'Components/InlineError/InlineError';
 import ComponentTileSkeleton from 'Components/ComponentTileSkeleton/ComponentTileSkeleton';
+import {
+    INDICATOR_STATUS_ICON_ENUM,
+    INDICATOR_STATUS_COLOR_SCHEME_ENUM,
+} from 'types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    parseISO,
+    formatDistanceToNow,
+} from 'date-fns';
 
 const App = (): JSX.Element | null => {
 
@@ -24,24 +38,80 @@ const App = (): JSX.Element | null => {
         void refetchSummary();
     };
 
+    const indicator = summary && summary.status && summary.status.indicator || undefined;
+
     return (
 
         <Container
             maxW="container.xl"
         >
 
-            <Heading
-                as="h1"
-                size="2xl"
+            <VStack
                 marginX="1rem"
                 marginY="10rem"
-                color="gray.600"
-                textAlign="center"
             >
 
-                GitHub Status
+                <Heading
+                    as="h1"
+                    size="2xl"
+                    color="gray.600"
+                    textAlign="center"
+                    marginBottom="2"
+                >
 
-            </Heading>
+                    GitHub Status
+
+                </Heading>
+
+                <Tag
+                    size="lg"
+                    colorScheme={indicator ? INDICATOR_STATUS_COLOR_SCHEME_ENUM[indicator] : 'green'}
+                >
+
+                    {indicator && INDICATOR_STATUS_ICON_ENUM[indicator] && (
+
+                        <FontAwesomeIcon
+                            icon={INDICATOR_STATUS_ICON_ENUM[indicator]}
+                        />
+
+                    )}
+
+                    {summary && summary.status && summary.status.description && (
+
+                        <TagLabel
+                            marginLeft="1"
+                        >
+
+                            {summary.status.description}
+
+                        </TagLabel>
+
+                    )}
+
+                </Tag>
+
+                {summary && summary.page && summary.page.updated_at && (
+
+                    <Tooltip
+                        label={parseISO(summary.page.updated_at).toLocaleString()}
+                        hasArrow={true}
+                    >
+
+                        <Text
+                            color="gray.500"
+                        >
+
+                            Last Updated {formatDistanceToNow(parseISO(summary.page.updated_at), {
+                                addSuffix: true
+                            })}
+
+                        </Text>
+
+                    </Tooltip>
+
+                )}
+
+            </VStack>
 
             {isError ? (
 

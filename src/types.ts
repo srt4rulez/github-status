@@ -14,12 +14,29 @@ export const COMPONENT_STATUS = {
 export type ComponentStatusKey = keyof typeof COMPONENT_STATUS;
 export type ComponentStatus = typeof COMPONENT_STATUS[ComponentStatusKey];
 
-export type IndicatorStatus =
-    | 'none'
-    | 'minor'
-    | 'major'
-    | 'critical'
-;
+export const INDICATOR_STATUS = {
+    NONE:     'none',
+    MINOR:    'minor',
+    MAJOR:    'major',
+    CRITICAL: 'critical',
+} as const;
+
+export type IndicatorStatusKey = keyof typeof INDICATOR_STATUS;
+export type IndicatorStatus = typeof INDICATOR_STATUS[IndicatorStatusKey];
+
+export const INDICATOR_STATUS_ICON_ENUM = {
+    [INDICATOR_STATUS.NONE]:     faCheckCircle,
+    [INDICATOR_STATUS.MINOR]:    faInfoCircle,
+    [INDICATOR_STATUS.MAJOR]:    faExclamationTriangle,
+    [INDICATOR_STATUS.CRITICAL]: faExclamationTriangle,
+};
+
+export const INDICATOR_STATUS_COLOR_SCHEME_ENUM = {
+    [INDICATOR_STATUS.NONE]:     'green',
+    [INDICATOR_STATUS.MINOR]:    'yellow',
+    [INDICATOR_STATUS.MAJOR]:    'orange',
+    [INDICATOR_STATUS.CRITICAL]: 'red',
+};
 
 export interface GithubComponent {
     id: string;
