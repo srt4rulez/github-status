@@ -7,11 +7,11 @@ import {
 } from '@chakra-ui/react';
 import type { GithubComponent } from 'types';
 import {
-    STATUS_ICON_ENUM,
-    STATUS_ICON_COLOR_ENUM,
-    STATUS_BORDER_COLOR_ENUM,
-    STATUS_LABEL_ENUM,
-    STATUS_LABEL_COLOR_ENUM,
+    COMPONENT_STATUS_ICON_ENUM,
+    COMPONENT_STATUS_ICON_COLOR_ENUM,
+    COMPONENT_STATUS_BORDER_COLOR_ENUM,
+    COMPONENT_STATUS_LABEL_ENUM,
+    COMPONENT_STATUS_LABEL_COLOR_ENUM,
 } from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -32,7 +32,7 @@ const ComponentTile = (props: ComponentTileProps): JSX.Element | null => {
         <Box
             padding="8"
             border="1px"
-            borderColor={props.status ? STATUS_BORDER_COLOR_ENUM[props.status] : undefined}
+            borderColor={props.status ? COMPONENT_STATUS_BORDER_COLOR_ENUM[props.status] : undefined}
             borderRadius="base"
             display="flex"
             flexDirection="column"
@@ -41,12 +41,12 @@ const ComponentTile = (props: ComponentTileProps): JSX.Element | null => {
         >
 
             <Box
-                color={props.status ? STATUS_ICON_COLOR_ENUM[props.status] : undefined}
+                color={props.status ? COMPONENT_STATUS_ICON_COLOR_ENUM[props.status] : undefined}
                 marginBottom="2"
             >
 
                 <FontAwesomeIcon
-                    icon={props.status ? STATUS_ICON_ENUM[props.status] : faCheckCircle}
+                    icon={props.status ? COMPONENT_STATUS_ICON_ENUM[props.status] : faCheckCircle}
                     size="2x"
                 />
 
@@ -65,11 +65,11 @@ const ComponentTile = (props: ComponentTileProps): JSX.Element | null => {
             {props.status && (
 
                 <Tag
-                    colorScheme={STATUS_LABEL_COLOR_ENUM[props.status]}
+                    colorScheme={COMPONENT_STATUS_LABEL_COLOR_ENUM[props.status]}
                     marginY="2"
                 >
 
-                    {STATUS_LABEL_ENUM[props.status]}
+                    {COMPONENT_STATUS_LABEL_ENUM[props.status]}
 
                 </Tag>
 

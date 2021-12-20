@@ -39,35 +39,35 @@ export interface Summary {
     status?: GithubStatus;
 }
 
-export const STATUS_ICON_ENUM = {
+export const COMPONENT_STATUS_ICON_ENUM = {
     [COMPONENT_STATUS.OPERATIONAL]:          faCheckCircle,
     [COMPONENT_STATUS.DEGRADED_PERFORMANCE]: faInfoCircle,
     [COMPONENT_STATUS.PARTIAL_OUTAGE]:       faExclamationTriangle,
     [COMPONENT_STATUS.MAJOR_OUTAGE]:         faExclamationTriangle,
 };
 
-export const STATUS_ICON_COLOR_ENUM = {
+export const COMPONENT_STATUS_ICON_COLOR_ENUM = {
     [COMPONENT_STATUS.OPERATIONAL]:          'green.500',
     [COMPONENT_STATUS.DEGRADED_PERFORMANCE]: 'yellow.500',
     [COMPONENT_STATUS.PARTIAL_OUTAGE]:       'orange.500',
     [COMPONENT_STATUS.MAJOR_OUTAGE]:         'red.500',
 };
 
-export const STATUS_BORDER_COLOR_ENUM = {
+export const COMPONENT_STATUS_BORDER_COLOR_ENUM = {
     [COMPONENT_STATUS.OPERATIONAL]:          'gray.200',
     [COMPONENT_STATUS.DEGRADED_PERFORMANCE]: 'yellow.500',
     [COMPONENT_STATUS.PARTIAL_OUTAGE]:       'orange.500',
     [COMPONENT_STATUS.MAJOR_OUTAGE]:         'red.500',
 };
 
-export const STATUS_LABEL_ENUM = {
+export const COMPONENT_STATUS_LABEL_ENUM = {
     [COMPONENT_STATUS.OPERATIONAL]:          'Operational',
     [COMPONENT_STATUS.DEGRADED_PERFORMANCE]: 'Degraded Performance',
     [COMPONENT_STATUS.PARTIAL_OUTAGE]:       'Partial Outage',
     [COMPONENT_STATUS.MAJOR_OUTAGE]:         'Major Outage',
 };
 
-export const STATUS_LABEL_COLOR_ENUM = {
+export const COMPONENT_STATUS_LABEL_COLOR_ENUM = {
     [COMPONENT_STATUS.OPERATIONAL]:          'green',
     [COMPONENT_STATUS.DEGRADED_PERFORMANCE]: 'yellow',
     [COMPONENT_STATUS.PARTIAL_OUTAGE]:       'orange',
