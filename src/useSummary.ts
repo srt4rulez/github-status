@@ -22,9 +22,7 @@ export const useSummary = (): UseSummaryReturn => {
         error,
         isValidating,
         mutate,
-    } = useSWR<Summary, AxiosError>('https://www.githubstatus.com/api/v2/summary.json', fetcher, {
-        refreshInterval: 3000,
-    });
+    } = useSWR<Summary, AxiosError>('https://www.githubstatus.com/api/v2/summary.json', fetcher);
 
     return {
         summary: data,
