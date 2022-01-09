@@ -1,7 +1,7 @@
 {
     "extends": [
         "config:base",
-        ":enableVulnerabilityAlerts",
-        "rangeStrategy": "update-lockfile"
-    ]
+        ":enableVulnerabilityAlerts"
+    ],
+    "rangeStrategy": "update-lockfile"
 }
