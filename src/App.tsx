@@ -9,6 +9,8 @@ import {
     VStack,
     Text,
     Tooltip,
+    Link,
+    Box,
 } from '@chakra-ui/react';
 import ComponentTile from 'Components/ComponentTile/ComponentTile';
 import InlineError from 'Components/InlineError/InlineError';
@@ -22,6 +24,27 @@ import {
     parseISO,
     formatDistanceToNow,
 } from 'date-fns';
+import packageJson from './../package.json';
+
+let author: {
+    name: string;
+    url: string;
+} | null = null;
+if (packageJson && ('author' in packageJson)) {
+    author = packageJson.author;
+}
+
+let version: string | null = null;
+if (packageJson && ('version' in packageJson)) {
+    version = `v${packageJson.version}`;
+}
+
+let repository: {
+    url: string;
+} | null = null;
+if (packageJson && ('repository' in packageJson)) {
+    repository = packageJson.repository;
+}
 
 const App = (): JSX.Element | null => {
 
@@ -171,6 +194,66 @@ const App = (): JSX.Element | null => {
                 </Grid>
 
             )}
+
+            <Box
+                as="footer"
+                textAlign="center"
+                paddingY="10"
+                paddingX="2"
+                fontSize="sm"
+            >
+
+                {author && author.name && author.url && (
+
+                    <React.Fragment>
+
+                        Created By
+
+                        {' '}
+
+                        <Link
+                            href={author.url}
+                            isExternal={true}
+                            color="blue.500"
+                        >
+                            {author.name}
+                        </Link>
+
+                    </React.Fragment>
+
+                )}
+
+                {version && (
+
+                    <React.Fragment>
+
+                        {' | '}
+
+                        {version}
+
+                    </React.Fragment>
+
+                )}
+
+                {repository && repository.url && (
+
+                    <React.Fragment>
+
+                        {' | '}
+
+                        <Link
+                            href={repository.url}
+                            isExternal={true}
+                            color="blue.500"
+                        >
+                            View on Github
+                        </Link>
+
+                    </React.Fragment>
+
+                )}
+
+            </Box>
 
         </Container>
 
