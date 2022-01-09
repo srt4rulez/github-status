@@ -2,6 +2,14 @@
     "name": "github-status",
     "version": "0.1.0",
     "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/srt4rulez/github-status"
+    },
+    "author": {
+        "name": "srt4rulez",
+        "url": "https://github.com/srt4rulez"
+    },
     "dependencies": {
         "@chakra-ui/react": "^1.7.3",
         "@emotion/react": "^11",
