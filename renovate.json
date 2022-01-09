@@ -1,7 +1,10 @@
 {
     "extends": [
         "config:base",
-        ":enableVulnerabilityAlerts"
+        ":enableVulnerabilityAlerts",
+        ":assignAndReview(srt4rulez)",
+        ":enableVulnerabilityAlertsWithLabel(security)",
+        ":label(dependencies)"
     ],
     "rangeStrategy": "update-lockfile"
 }
