@@ -1,0 +1,25 @@
+/*
+.app {
+}
+*/
+
+.app__footer-list {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+@media (max-width: 640px) {
+    .app__footer-list {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 641px) {
+    .app__footer-list li:not(:last-of-type)::after {
+        content: ' | ';
+        padding: 0 5px;
+        color: var(--chakra-colors-gray-400);
+    }
+}
+

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './App.css';
 import { useSummary } from 'useSummary';
 import {
     Grid,
@@ -203,55 +204,57 @@ const App = (): JSX.Element | null => {
                 fontSize="sm"
             >
 
-                {author && author.name && author.url && (
+                <ul
+                    className="app__footer-list"
+                >
 
-                    <React.Fragment>
+                    {author && author.name && author.url && (
 
-                        Created By
+                        <li>
 
-                        {' '}
+                            Created By
 
-                        <Link
-                            href={author.url}
-                            isExternal={true}
-                            color="blue.500"
-                        >
-                            {author.name}
-                        </Link>
+                            {' '}
 
-                    </React.Fragment>
+                            <Link
+                                href={author.url}
+                                isExternal={true}
+                                color="blue.500"
+                            >
+                                {author.name}
+                            </Link>
 
-                )}
+                        </li>
 
-                {version && (
+                    )}
 
-                    <React.Fragment>
+                    {version && (
 
-                        {' | '}
+                        <li>
 
-                        {version}
+                            {version}
 
-                    </React.Fragment>
+                        </li>
 
-                )}
+                    )}
 
-                {repository && repository.url && (
+                    {repository && repository.url && (
 
-                    <React.Fragment>
+                        <li>
 
-                        {' | '}
+                            <Link
+                                href={repository.url}
+                                isExternal={true}
+                                color="blue.500"
+                            >
+                                View on Github
+                            </Link>
 
-                        <Link
-                            href={repository.url}
-                            isExternal={true}
-                            color="blue.500"
-                        >
-                            View on Github
-                        </Link>
+                        </li>
 
-                    </React.Fragment>
+                    )}
 
-                )}
+                </ul>
 
             </Box>
 
