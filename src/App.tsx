@@ -10,8 +10,7 @@ import {
     VStack,
     Text,
     Tooltip,
-    Link,
-    Box,
+    useColorModeValue,
 } from '@chakra-ui/react';
 import ComponentTile from 'Components/ComponentTile/ComponentTile';
 import InlineError from 'Components/InlineError/InlineError';
@@ -20,15 +19,26 @@ import {
     INDICATOR_STATUS_ICON_ENUM,
     INDICATOR_STATUS_COLOR_SCHEME_ENUM,
 } from 'types';
+import type {
+    AppAuthor,
+    AppVersion,
+    AppRepository,
+} from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     parseISO,
     formatDistanceToNow,
 } from 'date-fns';
+import AppHeader from 'Components/AppHeader/AppHeader';
+import AppFooter from 'Components/AppFooter/AppFooter';
 
+export interface AppPropsInterface {
+    author?: AppAuthor;
+    version?: AppVersion;
+    repository?: AppRepository;
 }
 
-const App = (): JSX.Element | null => {
+const App = (props: AppPropsInterface): JSX.Element | null => {
 
     const {
         summary,
@@ -45,11 +55,15 @@ const App = (): JSX.Element | null => {
 
     const indicator = summary && summary.status && summary.status.indicator || undefined;
 
+    const lastUpdatedColor = useColorModeValue('gray.500', 'gray.400');
+
     return (
 
         <Container
             maxW="container.xl"
         >
+
+            <AppHeader />
 
             <VStack
                 marginX="1rem"
@@ -59,7 +73,7 @@ const App = (): JSX.Element | null => {
                 <Heading
                     as="h1"
                     size="2xl"
-                    color="gray.600"
+                    color={useColorModeValue('gray.600', 'gray.400')}
                     textAlign="center"
                     marginBottom="2"
                 >
@@ -103,7 +117,7 @@ const App = (): JSX.Element | null => {
                     >
 
                         <Text
-                            color="gray.500"
+                            color={lastUpdatedColor}
                         >
 
                             Last Updated {formatDistanceToNow(parseISO(summary.page.updated_at), {
@@ -177,67 +191,11 @@ const App = (): JSX.Element | null => {
 
             )}
 
-            <Box
-                as="footer"
-                textAlign="center"
-                paddingY="10"
-                paddingX="2"
-                fontSize="sm"
-            >
-
-                <ul
-                    className="app__footer-list"
-                >
-
-                    {author && author.name && author.url && (
-
-                        <li>
-
-                            Created By
-
-                            {' '}
-
-                            <Link
-                                href={author.url}
-                                isExternal={true}
-                                color="blue.500"
-                            >
-                                {author.name}
-                            </Link>
-
-                        </li>
-
-                    )}
-
-                    {version && (
-
-                        <li>
-
-                            {version}
-
-                        </li>
-
-                    )}
-
-                    {repository && repository.url && (
-
-                        <li>
-
-                            <Link
-                                href={repository.url}
-                                isExternal={true}
-                                color="blue.500"
-                            >
-                                View on Github
-                            </Link>
-
-                        </li>
-
-                    )}
-
-                </ul>
-
-            </Box>
+            <AppFooter
+                author={props.author}
+                version={props.version}
+                repository={props.repository}
+            />
 
         </Container>
 
