@@ -25,26 +25,7 @@ import {
     parseISO,
     formatDistanceToNow,
 } from 'date-fns';
-import packageJson from './../package.json';
 
-let author: {
-    name: string;
-    url: string;
-} | null = null;
-if (packageJson && ('author' in packageJson)) {
-    author = packageJson.author;
-}
-
-let version: string | null = null;
-if (packageJson && ('version' in packageJson)) {
-    version = `v${packageJson.version}`;
-}
-
-let repository: {
-    url: string;
-} | null = null;
-if (packageJson && ('repository' in packageJson)) {
-    repository = packageJson.repository;
 }
 
 const App = (): JSX.Element | null => {

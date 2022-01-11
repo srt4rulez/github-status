@@ -4,6 +4,17 @@ import {
     faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
+export type AppAuthor = {
+    name: string;
+    url: string;
+} | null;
+
+export type AppVersion = string | null;
+
+export type AppRepository = {
+    url: string;
+} | null;
+
 export const COMPONENT_STATUS = {
     OPERATIONAL:          'operational',
     DEGRADED_PERFORMANCE: 'degraded_performance',
