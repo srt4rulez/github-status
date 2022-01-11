@@ -4,6 +4,7 @@ import {
     Text,
     Heading,
     Tag,
+    useColorModeValue,
 } from '@chakra-ui/react';
 import type { GithubComponent } from 'types';
 import {
@@ -27,12 +28,20 @@ const ComponentTile = (props: ComponentTileProps): JSX.Element | null => {
         return null;
     }
 
+    let borderColor: null | [string, string] = null;
+
+    if (props.status) {
+        const [lightColor, darkColor] = COMPONENT_STATUS_BORDER_COLOR_ENUM[props.status];
+
+        borderColor = [lightColor, darkColor];
+    }
+
     return (
 
         <Box
             padding="8"
             border="1px"
-            borderColor={props.status ? COMPONENT_STATUS_BORDER_COLOR_ENUM[props.status] : undefined}
+            borderColor={borderColor ? useColorModeValue(...borderColor) : undefined}
             borderRadius="base"
             display="flex"
             flexDirection="column"
@@ -76,7 +85,7 @@ const ComponentTile = (props: ComponentTileProps): JSX.Element | null => {
             )}
 
             <Text
-                color="gray.600"
+                color={useColorModeValue('gray.600', 'gray.400')}
             >
 
                 {props.description}

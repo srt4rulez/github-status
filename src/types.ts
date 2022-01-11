@@ -83,11 +83,12 @@ export const COMPONENT_STATUS_ICON_COLOR_ENUM = {
     [COMPONENT_STATUS.MAJOR_OUTAGE]:         'red.500',
 };
 
+// [light, dark]
 export const COMPONENT_STATUS_BORDER_COLOR_ENUM = {
-    [COMPONENT_STATUS.OPERATIONAL]:          'gray.200',
-    [COMPONENT_STATUS.DEGRADED_PERFORMANCE]: 'yellow.500',
-    [COMPONENT_STATUS.PARTIAL_OUTAGE]:       'orange.500',
-    [COMPONENT_STATUS.MAJOR_OUTAGE]:         'red.500',
+    [COMPONENT_STATUS.OPERATIONAL]:          ['gray.200', 'gray.700'],
+    [COMPONENT_STATUS.DEGRADED_PERFORMANCE]: ['yellow.500', 'yellow.500'],
+    [COMPONENT_STATUS.PARTIAL_OUTAGE]:       ['orange.500', 'orange.500'],
+    [COMPONENT_STATUS.MAJOR_OUTAGE]:         ['red.500', 'red.500'],
 };
 
 export const COMPONENT_STATUS_LABEL_ENUM = {
