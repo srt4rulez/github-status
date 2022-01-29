@@ -5,7 +5,8 @@
         ":assignAndReview(srt4rulez)",
         ":enableVulnerabilityAlertsWithLabel(security)",
         ":label(dependencies)",
-        ":semanticCommits"
+        ":semanticCommits",
+        ":semanticCommitTypeAll(chore)"
     ],
     "rangeStrategy": "update-lockfile"
 }
