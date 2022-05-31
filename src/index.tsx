@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import 'index.css';
 import App from 'App';
 import {
@@ -31,7 +31,11 @@ if (packageJson && ('repository' in packageJson)) {
     repository = packageJson.repository;
 }
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+    document.getElementById('root') as HTMLElement
+);
+
+root.render(
     <React.StrictMode>
 
         <ChakraProvider
@@ -51,6 +55,5 @@ ReactDOM.render(
 
         </ChakraProvider>
 
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
 );
