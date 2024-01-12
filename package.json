@@ -37,7 +37,7 @@
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-scripts": "5.0.1",
-        "semantic-release": "^19.0.2",
+        "semantic-release": "^23.0.0",
         "swr": "^1.1.1",
         "typescript": "^4.5.4"
     },
